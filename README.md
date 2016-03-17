@@ -1,6 +1,7 @@
 # EEG_IOT
 EEG Headset with NeuroSky
 
+Install Necessary Packages: <br>
 Install Anaconda 2.7 x32 bit <br>
 http://repo.continuum.io/archive/Anaconda2-2.5.0-Windows-x86.exe <br>
 Install PyBluez 32 bit for Python 2.7 <br>
