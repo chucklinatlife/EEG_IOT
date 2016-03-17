@@ -11,9 +11,9 @@ import time
 import sys
 import argparse
 
-from NeuroSky_API.mindwave.bluetooth_headset import connect_magic, connect_bluetooth_addr
-from NeuroSky_API.mindwave.bluetooth_headset import BluetoothError
-from NeuroSky_API.examples.example_startup import mindwave_startup
+from NeuroSkyAPI.mindwave.bluetooth_headset import connect_magic, connect_bluetooth_addr
+from NeuroSkyAPI.mindwave.bluetooth_headset import BluetoothError
+from NeuroSkyAPI.examples.example_startup import mindwave_startup
 
 import socket
 #variable to debug code on local side
