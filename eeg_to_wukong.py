@@ -5,7 +5,7 @@
 #Original Author: github.com/akloster
 #Changes made by: github.com/cklam19
 
-from NeuroSky_API.mindwave.parser import ThinkGearParser, TimeSeriesRecorder
+from NeuroSkyAPI.mindwave.parser import ThinkGearParser, TimeSeriesRecorder
 import bluetooth
 import time
 import sys
