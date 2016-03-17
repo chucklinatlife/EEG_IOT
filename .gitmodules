@@ -1,0 +1,6 @@
+[submodule "NeuroSky_API"]
+	path = NeuroSky_API
+	url = https://github.com/akloster/python-mindwave
+[submodule "NeuroSkyAPI"]
+	path = NeuroSkyAPI
+	url = https://github.com/cklam19/python-mindwave
