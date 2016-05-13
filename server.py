@@ -1,0 +1,21 @@
+import tornado.ioloop
+import tornado.web
+import logging
+
+server_logger = logging.getLogger('server')
+
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello, world")
+
+def make_app():
+    return tornado.web.Application([
+        (r"/", MainHandler),
+    ])
+
+if __name__ == "__main__":
+    server_logger.info('Starting up web server at port 8888')
+    app = make_app()
+    app.listen(8888)
+    tornado.ioloop.IOLoop.current().start()
+
