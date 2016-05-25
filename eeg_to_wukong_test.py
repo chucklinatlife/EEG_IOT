@@ -18,10 +18,9 @@ from NeuroSkyAPI.mindwave.bluetooth_headset import BluetoothError
 from NeuroSkyAPI.examples.example_startup import mindwave_startup
 
 import socket
-#variable to debug code on local side
-RUN_LOCAL = True
+
     
-#define IP address same as Intel Edison
+#define IP address same as Gateway
 SERVER_ADDRESS =    '192.168.43.119'
 
 bMeasure = ['attention','meditation','blink','raw','poor_signal']
