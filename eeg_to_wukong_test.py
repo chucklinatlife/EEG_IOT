@@ -73,15 +73,17 @@ if __name__ == '__main__':
     #loop until time over
     while time.time() < t_end :
     '''
-    eyesOpen = True
+    eyesOpen = False
     count = 0
+    print_once = True
+    start_time = time.time()
     while True:
         brainArray = []
         time.sleep(0.25)
         
         nmin = .08
         t_end = time.time() + 60*(nmin)
-        
+        #start_time = time.time()
         if count < 40:
             #append data to array for 
             while (time.time() < t_end):
@@ -110,7 +112,12 @@ if __name__ == '__main__':
                 f.write(eyetag + ' ' + ' '.join(map(str,brainArray)) + '\n')
             count = count + 1
             print('------------------------'+str(count))
-        '''
+        end_time = time.time() - start_time
+        if count == 40 and print_once:
+            print('---------------------')
+            print(end_time)
+            print_once = not print_once
+'''
         userInput = raw_input('change eyetag?\n')
         if userInput == 'y':
             eyesOpen = not eyesOpen
