@@ -60,12 +60,12 @@ if __name__ == '__main__':
     parser = ThinkGearParser(recorders=[recorder])
 
     #define an INET, STREAMing socket
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     #define IP address and match port with EEGServer port
-    server_address = (SERVER_ADDRESS,2222)
-    print >>sys.stderr, 'connecting to %s port %s' % server_address
+    #server_address = (SERVER_ADDRESS,2222)
+    #print >>sys.stderr, 'connecting to %s port %s' % server_address
     #socket connect requires IP address and also port number
-    sock.connect(server_address)
+    #sock.connect(server_address)
     '''
     recording time
     t_end = time.time() + 60*(nmin)
@@ -74,44 +74,50 @@ if __name__ == '__main__':
     while time.time() < t_end :
     '''
     eyesOpen = True
-    
+    count = 0
     while True:
         brainArray = []
         time.sleep(0.25)
         
         nmin = .08
         t_end = time.time() + 60*(nmin)
-        #append data to array for 
-        while (time.time() < t_end):
-            data = mw_socket.recv(20000)
-            parser.feed(data)
-            brainSignal = getattr(recorder,args.measure)
-            if len(brainSignal)>0:
-                signalVal = brainSignal.values[-1]
-                #append data to brainArray
-                brainArray.append(signalVal)
-                #write data in format to send pver socket
-                #data2 = str(signalVal)+'\r\n'
-                data2 = str(signalVal)
-                print "Current " + str(args.measure).upper()+ " Value " + data2
-                
-               
-                sock.sendall(data2)
-                #time.sleep(0.25)
-        if eyesOpen == False:
-            eyetag = '0'
-        else:
-            eyetag = '1'
-        with open('brainArray-data.txt','a') as f:
-            f.write(eyetag + ' ' + ' '.join(map(str,brainArray)) + '\n')
         
+        if count < 40:
+            #append data to array for 
+            while (time.time() < t_end):
+                data = mw_socket.recv(20000)
+                parser.feed(data)
+                brainSignal = getattr(recorder,args.measure)
+                if len(brainSignal)>0:
+                    signalVal = brainSignal.values[-1]
+                    #append data to brainArray
+                    brainArray.append(signalVal)
+                    #write data in format to send pver socket
+                    #data2 = str(signalVal)+'\r\n'
+                    data2 = str(signalVal)
+                    print "Current " + str(args.measure).upper()+ " Value " + data2
+                    
+                   
+                    #sock.sendall(data2)
+                    #time.sleep(0.25)
+            
+            if eyesOpen == False:
+                eyetag = '0'
+            else:
+                eyetag = '1'
+            
+            with open('brainArray-data.txt','a') as f:
+                f.write(eyetag + ' ' + ' '.join(map(str,brainArray)) + '\n')
+            count = count + 1
+            print('------------------------'+str(count))
+        '''
         userInput = raw_input('change eyetag?\n')
         if userInput == 'y':
             eyesOpen = not eyesOpen
             print('eyes open: ' + str(eyesOpen) + '\n')
         else:
             print('eyes open: ' + str(eyesOpen) + '\n')
-            
+        '''
 '''
         if len(recorder.raw)>=500:
 			spectrum, relative_spectrum = bin_power(recorder.raw[-512*3:],[0.5,4,7,12,30],1024)
