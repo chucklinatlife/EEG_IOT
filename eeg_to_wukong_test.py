@@ -117,10 +117,8 @@ if __name__ == '__main__':
                 f.write(eyetag + ' ' + ' '.join(map(str,brainArraySpectrum)) + '\n')
             
             with open('brainArray-data-relspectrum.txt','a') as f:
-                f.write(eyetag + ' ' + ' '.join(map(str,brainArraySpectrum)) + '\n')
-            
-            
-            
+                f.write(eyetag + ' ' + ' '.join(map(str,brainArrayRelSpectrum)) + '\n')
+         
             count = count + 1
             print('------------------------'+str(count))
         end_time = time.time() - start_time
