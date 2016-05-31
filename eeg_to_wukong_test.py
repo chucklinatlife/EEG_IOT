@@ -103,6 +103,8 @@ if __name__ == '__main__':
                     #sock.sendall(data2)
                     #time.sleep(0.25)
             
+            brainArraySpectrum, brainArrayRelSpectrum = bin_power(brainArray,[0.5,4,7,12,30],512)
+            
             if eyesOpen == False:
                 eyetag = '0'
             else:
@@ -110,6 +112,15 @@ if __name__ == '__main__':
             
             with open('brainArray-data.txt','a') as f:
                 f.write(eyetag + ' ' + ' '.join(map(str,brainArray)) + '\n')
+             
+            with open('brainArray-data-spectrum.txt','a') as f:
+                f.write(eyetag + ' ' + ' '.join(map(str,brainArraySpectrum)) + '\n')
+            
+            with open('brainArray-data-relspectrum.txt','a') as f:
+                f.write(eyetag + ' ' + ' '.join(map(str,brainArraySpectrum)) + '\n')
+            
+            
+            
             count = count + 1
             print('------------------------'+str(count))
         end_time = time.time() - start_time
