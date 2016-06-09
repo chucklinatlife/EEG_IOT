@@ -11,6 +11,7 @@ import bluetooth
 import time
 import sys
 import argparse
+import os
 
 
 from NeuroSkyAPI.mindwave.bluetooth_headset import connect_magic, connect_bluetooth_addr
@@ -73,10 +74,17 @@ if __name__ == '__main__':
     #loop until time over
     while time.time() < t_end :
     '''
-    eyesOpen = False
+    eyesOpen = True
     count = 0
     print_once = True
     start_time = time.time()
+    
+    #remove old brainArray data
+    try:
+        os.remove('brainArray.txt')
+    except:
+        pass
+    
     while True:
         brainArray = []
         time.sleep(0.25)
