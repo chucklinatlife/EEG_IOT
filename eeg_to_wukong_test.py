@@ -74,7 +74,7 @@ if __name__ == '__main__':
     #loop until time over
     while time.time() < t_end :
     '''
-    eyesOpen = False
+    eyesOpen = True
     count = 0
     print_once = True
     start_time = time.time()
